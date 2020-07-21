@@ -11,14 +11,60 @@
     <title>Hello, world!</title>
 </head>
 <body">
-    <h4>
-        <marquee class="text-danger"><-----Total Confirmed Cases In The World <b>{{overall.TotalConfirmed}}</b> ------
-            <span class="text-dark"> New Cases <b>{{overall.NewConfirmed}}</b> ------ </span>
-            <span class="text-danger">Total Deaths <b>{{overall.TotalDeaths}}</b> ------ </span>
-            <span class="text-danger">NewDeaths <b>{{overall.NewDeaths}}</b></span> ------
-            <span class="text-danger">TotalRecovered <b>{{overall.TotalRecovered}} -----> </b></span>
-        </marquee>
-    </h4>
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                WorldWide Cases
+              </button>
+            </h2>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                Total Confirmed Cases In The World <b>{{overall.TotalConfirmed}}</b> <br>
+                 New Cases <b>{{overall.NewConfirmed}}</b><br>
+                Total Deaths <b>{{overall.TotalDeaths}}</b> <br>
+                NewDeaths <b>{{overall.NewDeaths}}</b> <br>
+                TotalRecovered <b>{{overall.TotalRecovered}} </b>><br>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Cases In Indore
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              Total Confirmed Cases {{indore.confirmed}} <br>
+              Active Cases {{indore.active}} <br>
+              Total Recoverd {{indore.recovered}} <br>
+              Total Deaths {{indore.deceased}}
+            </div>
+          </div>
+        </div>
+        <!-- <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Collapsible Group Item #3
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div> -->
+      </div>
+    
+      
     <table class="table table-hover table-bordered table-dark">
         <thead>
             <tr class='bg-primary'>
@@ -28,6 +74,7 @@
                 <th scope="col">New Cases</th>
                 <th scope="col">Total Deaths</th>
                 <th scope="col">New Deaths</th>
+                <th scope="col">Total Recoverd</th>
                 <th scope="col">New Recoverd</th>
                 <th scope="col">Date</th>
             </tr>
@@ -41,6 +88,7 @@
                 <td>{{j.NewConfirmed}}</td>
                 <td>{{j.TotalDeaths}}</td>
                 <td>{{j.NewDeaths}}</td>
+                <td>{{j.TotalRecovered}}</td>
                 <td>{{j.NewRecovered}}</td>
                 <td>{{j.Date}}</td>
             </tr>

@@ -2,13 +2,21 @@ from django.shortcuts import render
 import requests
 import json
 def index(request):
-    response = requests.get("https://api.covid19api.com/summary")
-    data = response.json()
+    worldwide = requests.get("https://api.covid19api.com/summary")
+    indore_data = requests.get('https://api.covid19india.org/state_district_wise.json')
+
+    #world_wide data
+    worldwide_data = worldwide.json()
     def myFunc(e):
         return e['TotalConfirmed']
-    countries = data['Countries']
+    countries = worldwide_data['Countries']
     countries.sort(reverse=True, key=myFunc)
-    overall = data['Global']
+    overall = worldwide_data['Global']
+
+
+    #state wise data
+    indore_data = indore_data.json()
+    indore = indore_data['Madhya Pradesh']['districtData']['Indore']
     # print(data['Countries'][23]['TotalDeaths'])
 
     # url = "https://corona-virus-world-and-india-data.p.rapidapi.com/api"
@@ -22,4 +30,4 @@ def index(request):
     # response = response.json()
 
     # print(response['countries_stat'][0]['total_tests'])
-    return render(request, 'index.html', {'countries': countries, 'overall': overall})
+    return render(request, 'index.html', {'countries': countries, 'overall': overall, 'indore': indore})

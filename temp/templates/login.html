@@ -1,0 +1,20 @@
+<html>
+    <body>
+        login through this form to get your access token!!!
+        <form action="/postapi/" method="post">
+            {% csrf_token %}
+        <label>username</label>
+        <input type="text" name="username">
+        <br>
+        <label>password</label>
+        <input type="text" name="password">
+        <br>
+        <input type="submit" value="submit">
+        </form>
+
+        <div>
+            <h2>Your access Token Is</h2>
+            <h4>{{newvalue}}</h4>
+        </div>
+    </body>
+</html>
